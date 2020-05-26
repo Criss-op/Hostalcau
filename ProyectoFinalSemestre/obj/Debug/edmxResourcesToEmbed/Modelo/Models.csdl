@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AsignarMenu">
+    <Key>
+      <PropertyRef Name="idAsignarMenu" />
+    </Key>
+    <Property Name="idAsignarMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="idMenu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Menu" Relationship="Self.FK__AsignarMe__idMen__440B1D61" FromRole="AsignarMenu" ToRole="Menu" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__AsignarMe__idRol__44FF419A" FromRole="AsignarMenu" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Rut_Cliente" />
+    </Key>
+    <Property Name="Rut_Cliente" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="Int32" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EstadoPersonas" Relationship="Self.FK__Cliente__Estado___4E88ABD4" FromRole="Cliente" ToRole="EstadoPersonas" />
+    <NavigationProperty Name="Reservacion" Relationship="Self.FK__Reservaci__Rut_C__5629CD9C" FromRole="Cliente" ToRole="Reservacion" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__idEstad__3D5E1FD2" FromRole="Estado" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Estado_Habi">
+    <Key>
+      <PropertyRef Name="ID_Estado_HAB" />
+    </Key>
+    <Property Name="ID_Estado_HAB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Estado" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Habitacion" Relationship="Self.FK__Habitacio__Estad__52593CB8" FromRole="Estado_Habi" ToRole="Habitacion" />
+  </EntityType>
+  <EntityType Name="EstadoPersonas">
+    <Key>
+      <PropertyRef Name="ID_Estado_P" />
+    </Key>
+    <Property Name="ID_Estado_P" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Estado" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__Estado___4E88ABD4" FromRole="EstadoPersonas" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="EstadoReservacion">
+    <Key>
+      <PropertyRef Name="ID_Estado_RESE" />
+    </Key>
+    <Property Name="ID_Estado_RESE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Estado" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Reservacion" Relationship="Self.FK__Reservaci__Estad__5812160E" FromRole="EstadoReservacion" ToRole="Reservacion" />
+  </EntityType>
+  <EntityType Name="Habitacion">
+    <Key>
+      <PropertyRef Name="Numero" />
+    </Key>
+    <Property Name="Numero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Capacidad" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado_Habi" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Estado_Habi1" Relationship="Self.FK__Habitacio__Estad__52593CB8" FromRole="Habitacion" ToRole="Estado_Habi" />
+    <NavigationProperty Name="Reservacion" Relationship="Self.FK__Reservaci__Numer__571DF1D5" FromRole="Habitacion" ToRole="Reservacion" />
+    <Property Name="Cuarto" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="idMenu" />
+    </Key>
+    <Property Name="idMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="linkMenu" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AsignarMenu" Relationship="Self.FK__AsignarMe__idMen__440B1D61" FromRole="Menu" ToRole="AsignarMenu" />
+  </EntityType>
+  <EntityType Name="Reservacion">
+    <Key>
+      <PropertyRef Name="AD_Reservacion" />
+    </Key>
+    <Property Name="AD_Reservacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaEntrada" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaSalida" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalaPagar" Type="Int32" Nullable="false" />
+    <Property Name="CantidaddeDias" Type="Int32" Nullable="false" />
+    <Property Name="EstadodePago" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rut_Cliente" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Numero" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Reservaci__Rut_C__5629CD9C" FromRole="Reservacion" ToRole="Cliente" />
+    <NavigationProperty Name="EstadoReservacion" Relationship="Self.FK__Reservaci__Estad__5812160E" FromRole="Reservacion" ToRole="EstadoReservacion" />
+    <NavigationProperty Name="Habitacion" Relationship="Self.FK__Reservaci__Numer__571DF1D5" FromRole="Reservacion" ToRole="Habitacion" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AsignarMenu" Relationship="Self.FK__AsignarMe__idRol__44FF419A" FromRole="Roles" ToRole="AsignarMenu" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__idRol__3E52440B" FromRole="Roles" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userNombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userClave" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK__Usuario__idEstad__3D5E1FD2" FromRole="Usuario" ToRole="Estado" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK__Usuario__idRol__3E52440B" FromRole="Usuario" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK__AsignarMe__idMen__440B1D61">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+    <End Role="AsignarMenu" Type="Self.AsignarMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="idMenu" />
+      </Principal>
+      <Dependent Role="AsignarMenu">
+        <PropertyRef Name="idMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AsignarMe__idRol__44FF419A">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="AsignarMenu" Type="Self.AsignarMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="AsignarMenu">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cliente__Estado___4E88ABD4">
+    <End Role="EstadoPersonas" Type="Self.EstadoPersonas" Multiplicity="1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoPersonas">
+        <PropertyRef Name="ID_Estado_P" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="Estado_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservaci__Rut_C__5629CD9C">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Reservacion" Type="Self.Reservacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Rut_Cliente" />
+      </Principal>
+      <Dependent Role="Reservacion">
+        <PropertyRef Name="Rut_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__idEstad__3D5E1FD2">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Habitacio__Estad__52593CB8">
+    <End Role="Estado_Habi" Type="Self.Estado_Habi" Multiplicity="1" />
+    <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado_Habi">
+        <PropertyRef Name="ID_Estado_HAB" />
+      </Principal>
+      <Dependent Role="Habitacion">
+        <PropertyRef Name="Estado_Habi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservaci__Estad__5812160E">
+    <End Role="EstadoReservacion" Type="Self.EstadoReservacion" Multiplicity="1" />
+    <End Role="Reservacion" Type="Self.Reservacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoReservacion">
+        <PropertyRef Name="ID_Estado_RESE" />
+      </Principal>
+      <Dependent Role="Reservacion">
+        <PropertyRef Name="EstadodePago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservaci__Numer__571DF1D5">
+    <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="1" />
+    <End Role="Reservacion" Type="Self.Reservacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Habitacion">
+        <PropertyRef Name="Numero" />
+      </Principal>
+      <Dependent Role="Reservacion">
+        <PropertyRef Name="Numero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__idRol__3E52440B">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AsignarMenu" EntityType="Self.AsignarMenu" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" />
+    <EntitySet Name="Estado_Habi" EntityType="Self.Estado_Habi" />
+    <EntitySet Name="EstadoPersonas" EntityType="Self.EstadoPersonas" />
+    <EntitySet Name="EstadoReservacion" EntityType="Self.EstadoReservacion" />
+    <EntitySet Name="Habitacion" EntityType="Self.Habitacion" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" />
+    <EntitySet Name="Reservacion" EntityType="Self.Reservacion" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__AsignarMe__idMen__440B1D61" Association="Self.FK__AsignarMe__idMen__440B1D61">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="AsignarMenu" EntitySet="AsignarMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AsignarMe__idRol__44FF419A" Association="Self.FK__AsignarMe__idRol__44FF419A">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="AsignarMenu" EntitySet="AsignarMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cliente__Estado___4E88ABD4" Association="Self.FK__Cliente__Estado___4E88ABD4">
+      <End Role="EstadoPersonas" EntitySet="EstadoPersonas" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservaci__Rut_C__5629CD9C" Association="Self.FK__Reservaci__Rut_C__5629CD9C">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Reservacion" EntitySet="Reservacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__idEstad__3D5E1FD2" Association="Self.FK__Usuario__idEstad__3D5E1FD2">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Habitacio__Estad__52593CB8" Association="Self.FK__Habitacio__Estad__52593CB8">
+      <End Role="Estado_Habi" EntitySet="Estado_Habi" />
+      <End Role="Habitacion" EntitySet="Habitacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservaci__Estad__5812160E" Association="Self.FK__Reservaci__Estad__5812160E">
+      <End Role="EstadoReservacion" EntitySet="EstadoReservacion" />
+      <End Role="Reservacion" EntitySet="Reservacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservaci__Numer__571DF1D5" Association="Self.FK__Reservaci__Numer__571DF1D5">
+      <End Role="Habitacion" EntitySet="Habitacion" />
+      <End Role="Reservacion" EntitySet="Reservacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__idRol__3E52440B" Association="Self.FK__Usuario__idRol__3E52440B">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ProyectoHModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ProyectoHModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

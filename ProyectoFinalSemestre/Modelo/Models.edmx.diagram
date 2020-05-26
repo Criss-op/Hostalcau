@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8b7a096b2e24843be268d6fdb7bdcf2" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="ProyectoHModel.AsignarMenu" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Cliente" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Estado" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Estado_Habi" Width="1.5" PointX="9" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.EstadoPersonas" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.EstadoReservacion" Width="1.5" PointX="11.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Habitacion" Width="1.5" PointX="11.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Menu" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Reservacion" Width="1.5" PointX="13.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Roles" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoHModel.Usuario" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoHModel.FK__AsignarMe__idMen__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__AsignarMe__idRol__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__Cliente__Estado___4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__Reservaci__Rut_C__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__Usuario__idEstad__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__Habitacio__Estad__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__Reservaci__Estad__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__Reservaci__Numer__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoHModel.FK__Usuario__idRol__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
